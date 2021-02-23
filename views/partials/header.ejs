@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <title>Fitness Star</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poly&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Armata&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Potta+One&family=Yusei+Magic&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/stylesheets/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body onresize="getSize()">
+        <nav class="navbar navbar-expand-lg navbar-light sticky-top" id="navbar" style="background-color: #61e1eb;">
+          <a class="navbar-brand" href="/">Fitness Star</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+    
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav my-0 mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="/"><i class="fa fa-home"></i> <strong>Home</strong> <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/all_plans"><i class="fa fa-bars" aria-hidden="true"></i> <strong>View All Plans</strong> <span class="sr-only">(current)</span></a>
+              </li>
+              <% if(currentUser) { %>
+                <% if(currentUser.role == "trainer" || currentUser.role == "admin"){ %>
+                  <li class="nav-item active">
+                  <a class="nav-link" href="/trainer_room"><i class="fa fa-futbol-o" aria-hidden="true"></i> <strong>Trainer's Room</strong> <span class="sr-only">(current)</span></a>
+                </li>
+                <% } %>
+                <% if(currentUser.role == "admin") { %>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/admin"><i class="fa fa-user-secret fa-lg" title="Align Justify"></i> <strong>Admin Panel</strong></a>
+                  </li>
+                <% } %>
+              <% } %>
+            </ul>
+    
+            <% if(!currentUser) { %>
+              <div class="nav-item my-0 mr-1">
+                <a class="nav-link" href="/login"><i class="fa fa-sign-in fa-lg"></i> Login</a>
+              </div>
+              <div class="nav-item mr-0">
+                <a class="nav-link" href="/register"><i class="fa fa-user-plus fa-lg"></i> Sign Up</a>
+              </div>
+            <% } else { %>
+              <div class="nav-item my-0 mr-1">
+                <a class="nav-link" href="#"><i class="fa fa-user fa-lg"></i> Signed in As <%= currentUser.username %></a>
+              </div>
+              <div class="nav-item mr-0">
+                <a class="nav-link" href="/logout">Logout <i class="fa fa-sign-in fa-lg"></i></a>
+              </div>
+            <% } %>
+          </div>
+        </nav>
+
+        <br>
+        

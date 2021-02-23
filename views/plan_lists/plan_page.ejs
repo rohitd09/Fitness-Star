@@ -1,0 +1,35 @@
+<%- include('../partials/header') %>
+
+<div class="container-fluid">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="/all_plans">All Plans</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Fitness Plan</li>
+        </ol>
+    </nav>
+    <div class="row plan-page-contents">
+        <div class="col-md-4 col-12">
+            <figure class="figure">
+                <img src="/uploads/<%= plans.image %>" width="400%" class="figure-img img-thumbnail img-fluid rounded" alt="...">
+                <figcaption class="figure-caption text-right"><a href="/start_plan/<%= plans._id %> " class="btn btn-success">Start Plan</a></figcaption>
+            </figure>
+        </div>
+        <div class="col-md-7 col-lg-offset-1 col-12">
+            <div class="card">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= plans.plan_name %> </h5>
+                        <h6 class="card-subtitle mb-5 text-muted">By <%= plans.plan_author %></h6>
+                        <p class="card-text"><strong>Number of Routines: </strong><%= plans.number_of_routines %></p>
+                        <h4 class="card-subtitle mb-2">Description</h4>
+                        <p class="card-text"><%= plans.plan_description %></p>
+                        <p class="card-text mt-4">Contact the author on <a href="mailto:<%= plans.author_email %> " class="card-link">email</a></p>
+                      </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

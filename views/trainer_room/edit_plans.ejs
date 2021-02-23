@@ -1,0 +1,149 @@
+<%- include('../partials/header') %>
+
+<center><h1><i class="fa fa-pencil-square-o fa-lg"></i> Update Training Plan</h1></center>
+
+<div class="row">
+  <div class="col-md-4 col-sm-6 offset-sm-4">
+    <div class="card mt-4 shadow-lg">
+      <div class="card-body">
+        <form action="/trainer_room/<%= plans._id %>?_method=PUT" method="POST">
+          <div class="mb-3">
+            <label class="form-label"><b>Training Plan Name:</b> </label>
+            <input type="text" class="form-control" name="plan_name" value="<%= plans.plan_name %>" required>
+          </div>
+          <div class="mb-3 form-check-inline">
+            <label class="form-label"><b>Gender Category:</b></label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="Male" <% if(plans.gender_category == "Male"){ %> checked <% } %> value="Male" name="gender_category">
+              <label class="form-check-label">
+                <b>Male</b>
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="Female" <% if(plans.gender_category == "Female"){ %> checked <% } %> value="Female" name="gender_category">
+              <label class="form-check-label">
+                <b>Female</b>
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="Both" <% if(plans.gender_category == "Both"){ %> checked <% } %> value="Both" name="gender_category">
+              <label class="form-check-label">
+                <b>Both</b>
+              </label>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label"><b>Author Name:</b></label>
+            <input type="text" class="form-control" value="<%= plans.plan_author %>" name="plan_author">
+          </div>
+          <div class="mb-3">
+            <label class="form-label"><b>Email address:</b></label>
+            <input type="email" class="form-control" value="<%= plans.plan_author_email %>" name="plan_author_email">
+          </div>
+          <div class="form-group" style="width: 100%;">
+            <label><b>Description:</b></label>
+            <textarea class="form-control" name="plan_description" rows="3"><%= plans.plan_description %></textarea>
+          </div>
+          <div class="mb-3">
+            
+          </div>
+          <button type="submit" class="btn btn-success"><b>Submit Changes</b></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<div class="container mt-5">
+  <h3>Add Routines for you Plans</h3>
+  <ul class="list-inline">
+    <li class="list-inline-item"><strong>Search for routines: </strong></li>
+    <li class="list-inline-item"><input class="form-control" id="addRoutine" type="search" placeholder="Search" aria-label="Search"></li>
+  </ul>
+  <table class="table ScrollStyle addRoutineTable">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Routine Name</th>
+        <th scope="col">Author Name</th>
+        <th scope="col">Author Email</th>
+        <th scope="col">Video Link</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody id="addRoutineTable">
+      <% i = 1 %>
+      <% allRoutine.forEach((routine)=>{ %>
+        <% if(plans.routines.includes(routine._id) == false){ %>
+          <tr id="add">
+            <th scope="row"><%= i %></th>
+            <td><%= routine.routine_name %></td>
+            <td><%= routine.routine_author_name %></td>
+            <td><%= routine.routine_author_email %></td>
+            <td><a href="/preview/<%= routine._id %>">Click here to view</a></td>
+            <td><a href="/trainer_room/<%= plans._id %>/adding_routine/<%= routine._id %>?_method=PUT" style="color: rgb(39, 231, 14);" title="Add Routine to Plan"><i class="fa fa-check" aria-hidden="true"></i></a></td>
+          </tr>
+          <% i++ %>
+        <% } %>  
+      <% }) %> 
+    </tbody>
+  </table>
+</div>
+
+<div class="container mt-5">
+  <h3>Edit Routines for you Plans</h3>
+  <ul class="list-inline">
+    <li class="list-inline-item"><strong>Search for routines: </strong></li>
+    <li class="list-inline-item"><input class="form-control" id="editRoutine" type="search" placeholder="Search" aria-label="Search"></li>
+  </ul>
+  <table class="table ScrollStyle">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Routine Name</th>
+        <th scope="col">Author Name</th>
+        <th scope="col">Author Email</th>
+        <th scope="col">Video Link</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody id="editRoutineTable">
+      <% i = 1 %>
+      <% allRoutine.forEach((routine)=>{ %>
+        <% if(plans.routines.includes(routine._id) == true){ %>
+          <tr id="edit">
+            <th scope="row"><%= i %></th>
+            <td><%= routine.routine_name %></td>
+            <td><%= routine.routine_author_name %></td>
+            <td><%= routine.routine_author_email %></td>
+            <td><a href="/preview/<%= routine._id %>">Click here to view</a></td>
+            <td><a href="/trainer_room/<%= plans._id %>/removing_routine/<%= routine._id %>?_method=DELETE" style="color: rgb(218, 13, 13);" title="Remove Routine from Plan"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+          </tr>
+          <% i++ %>
+        <% } %>  
+      <% }) %> 
+    </tbody>
+  </table>
+</div>
+  
+<script>
+    $(document).ready(function(){
+      $("#addRoutine").on("keyup", function(){
+        var value = $(this).val().toLowerCase()
+        $("#addRoutineTable #add").filter(function(){
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        })
+      })
+    })
+
+    $(document).ready(function(){
+      $("#editRoutine").on("keyup", function(){
+        var value = $(this).val().toLowerCase()
+        $("#editRoutineTable #edit").filter(function(){
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        })
+      })
+    })
+</script>
+
+<%- include('../partials/footer') %>

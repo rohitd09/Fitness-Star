@@ -1,0 +1,32 @@
+<%- include('../partials/header') %>
+
+<div class="container-fluid">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="/all_plans">All Plans</a></li>
+          <li class="breadcrumb-item"><a href="/plan/<%= plans._id %> ">Fitness Plan</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Routine Session</li>
+        </ol>
+    </nav>
+    <div class="row plan-page-contents">
+        <div class="col-md-7 col-12">
+            <video height="380" controls>
+                <source src="/uploads/<%= routine.video %>" type="video/mp4">
+            </video>
+        </div> 
+        <div class="col-md-4 mt-3 col-12">
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <% i = 0 %>
+                  <% plans.routines.forEach((routine_item)=>{ %> 
+                    <% i++ %>
+                      <a href="/start_plan/<%= plans._id %>/routine/<%= routine_item %>"><li class="list-group-item links <% if(routine_item == currentRoutine){ %> highlighted <% } %>"> <strong><u>Routine <%= i %></u></strong> </li></a>
+                  <% }) %> 
+                </ul>
+              </div>
+        </div>       
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

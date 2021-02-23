@@ -1,0 +1,102 @@
+<%- include('../partials/header') %>
+
+<div class="jumbotron admin-jumbotron" style="background-color: #3a7fad; color: rgb(0, 0, 0);">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 offset-md-0">
+          <br>
+          <h1 class="display-4"><i class="fa fa-bar-chart"></i> Dashboard</h1>
+          <p class="lead">Admin Dashboard and Content Summary</p>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="container">
+  <% if(error && error.length > 0){ %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <%= error %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </div>
+  <% } %>
+  <% if(success && success.length > 0){ %>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <%= success %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </div>
+  <% } %>
+</div>
+
+<div class="container">
+    <div class="row">
+      <div class="col-12 col-md-4 offset-md-0 mb-1">
+        <div class="card">
+            <div class="card-header">
+              <center><h5><span class="fa fa-users fa-lg"></span> Total Number of Users</h5></center>
+            </div>
+            <div class="card-body">
+              <center class="card-text"><strong><%= generalUsersCount %></strong></center>
+            </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4 offset-md-0">
+        <div class="card">
+          <div class="card-header">
+            <center><h5><i class="fa fa-id-badge" aria-hidden="true"></i> Number of Trainers</h5></center>
+          </div>
+          <div class="card-body">
+            <center class="card-text"><strong><%= trainerCount %> </strong></center>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4 offset-md-0">
+        <div class="card">
+          <div class="card-header">
+            <center><h5><i class="fa fa-heartbeat" aria-hidden="true"></i> Number of Fitness Plans</h5></center>
+          </div>
+          <div class="card-body">
+            <center class="card-text"><strong><%= plansCount %></strong></center>
+          </div>
+        </div>
+      </div>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Username</th>
+            <th scope="col">Role</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <p id="zero"><%- i = 0 %></p>
+          <% users.forEach((user) => { %>
+            <% i++ %>
+            <tr>
+              <th scope="row"><%= i %></th>
+              <td><strong><%= user.username %></strong></td>
+              <td><strong><%= user.role %></strong></td>
+              <td><% if(user.role == "user"){ %>
+                <form action="/admin/<%= user._id %>?_method=PUT" method="POST">
+                  <button type="submit" href="#" class="btn btn-success">Convert to Trainer</button>
+                </form>
+              <% }else{ %>
+                <form action="/admin/<%= user._id %>?_method=PUT" method="POST">
+                  <button type="submit" href="#" class="btn btn-danger">Convert to User</button>
+                </form>
+              <% } %>
+              </td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+<script>
+  document.querySelector("#zero").style.visibility = "hidden"
+</script>
+
+<%- include('../partials/footer') %>

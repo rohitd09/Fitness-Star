@@ -1,0 +1,12 @@
+<%- include('../partials/header') %>
+
+<div class="container">
+    <h1><%= preview.routine_name %></h1>
+    <p>By <em><%= preview.routine_author_name %></em></p>
+    <p>Contact on <a href="mailto:<%= preview.routine_author_email %>"><em><%= preview.routine_author_email %></em></a> </p>
+    <video width="640" height="480" controls>
+        <source src="/uploads/<%= preview.video %>" type="video/mp4">
+    </video>
+</div>
+
+<%- include('../partials/footer') %>

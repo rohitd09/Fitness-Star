@@ -1,0 +1,43 @@
+<%- include('../partials/header') %>
+
+<div class="container-fluid">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">All Plans</li>
+        </ol>
+    </nav>
+    <h3 class="all_plans_header">All Plans</h3>
+    <p class="all_plans_header" id="all_plans_sub">Checkout our top rank Professional Fitness Plans</p>
+</div>
+<hr>
+<br>
+<div class="container all_plans_cards">
+    <div class="row">
+        <% plans.forEach((plan)=>{ %>
+            <% if(plan.number_of_routines > 0){ %>
+                <div class="col-lg-3 mol-md-4 col-sm-12 col-xs-12">
+                <div class="card-deck">
+                    <div class="card mb-3" style="width: 18rem;">
+                        <a href="plan/<%= plan._id %>" class="remove-line">
+                            <div class="card-body">
+                                <center><img src="/uploads/<%= plan.image %>" alt="Image" width="118%" style="margin-top: -20px; margin-left: -19px;"></center>
+                                <hr>
+                                <h5 class="card-title"><%= plan.plan_name %></h5>
+                                <h6 class="card-subtitle mb-2 text-muted">By <%= plan.plan_author %></h6>
+                                Chech out the plan
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <% } %> 
+        <% }) %> 
+    </div>
+</div>
+
+<script>
+    
+</script>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,135 @@
+<%- include('./partials/header') %> 
+
+<div id="index-head" class="container-fluid">
+    <pre><h1>Start Your Fitness 
+    Program Today</h1></pre>
+    <a href="/all_plans" class="btn btn-lg btn-primary"> <strong>Get Started Today</strong>  </a>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
+
+<div class="container-fluid mt-5 second-column">
+    <div class="container">
+        <div class="row mt-5 align-items-center">
+            <div class="col-lg-6 col-md-6 col-12">
+                <h3 style="font-family: 'Yusei Magic', sans-serif;">Easy To Follow</h3>
+                <p style="font-family: 'Work Sans', sans-serif;">With proper routines and plans which you can view from anywhere with internet connection, and easy to follow videos even without workout experience one can try our begiiner friendly plans.</p>
+            </div>
+            <div class="col-lg-5 col-md-4 offset-lg-1 offset-md-2">
+                <img src="./Excercise-image1.jfif" height="425" alt="Image"> 
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt-5 first-column">
+    <div class="container">
+        <div class="row mt-5 align-items-center">
+            <div class="col-lg-6 col-md-6 col-12">
+                <iframe width="560" class="youtube-video shadow-lg" height="325" src="https://www.youtube.com/embed/lK_j-JV6B10" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="col-lg-5 col-md-4 offset-lg-1 offset-md-2">
+                <h3 style="font-family: 'Yusei Magic', sans-serif;">Get Hyped Up!!</h3>
+                <p style="font-family: 'Work Sans', sans-serif;">Watch our professional recommended light-weight as well as extensive home fitness work out programs, all online and also get in touch with our professional trainers.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt-5 second-column">
+    <div class="container">
+        <div class="row mt-5 align-items-center">
+            <div class="col-lg-6 col-md-6 col-12">
+                <h3 style="font-family: 'Yusei Magic', sans-serif;">Get started with Yoga</h3>
+                <p style="font-family: 'Work Sans', sans-serif;">Get started and healthy with our yoga programs, available with detailed routine guides and step by step instructions, in all you can do at home fashion.</p> 
+            </div>
+            <div class="col-lg-5 col-md-4 offset-lg-1 offset-md-2">
+                <img src="./yoga-image.jpg" height="425" alt="Image">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container index-cards mt-5 last-column">
+    <div class="last-column-heading">
+        <center><p id="new-plans"><strong>Don't know where to start?</strong></p></center>
+    </div>
+    <br>
+    <div class="row">
+        <% i = 0 %>
+            <% plans.forEach((plan)=>{ %>
+                <% if(i < 4 && plan.number_of_routines > 0){ %>
+                    <div class="col-lg-3 mol-md-4 col-sm-12 col-xs-12">
+                    <div class="card-deck">
+                        <div class="card card-shadow<%- i %>" onmouseover="enableShadow<%= i %>()" onmouseout="disableShadow<%= i %>()" style="width: 18rem;">
+                            <a href="plan/<%= plan._id %>" class="remove-line">
+                                <div class="card-body">
+                                    <center><img src="/uploads/<%= plan.image %>" alt="Image" width="118%" style="margin-top: -20px; margin-left: -19px;"></center>
+                                    <hr>
+                                    <h5 class="card-title"><%= plan.plan_name %></h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">By <%= plan.plan_author %></h6>
+                                    Chech out the plan
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <% i++ %> 
+            <% } %>   
+        <% }) %>  
+    </div> 
+</div>
+
+<script>
+    
+    function enableShadow0(){
+        document.querySelector(".card-shadow0").classList.add("shadow-lg")
+        document.querySelector(".card-shadow0").classList.add("shadowAnimate")
+        document.querySelector(".card-shadow0").classList.add("bg-white")
+        document.querySelector(".card-shadow0").classList.add("rounded")
+    }
+    function enableShadow1(){
+        document.querySelector(".card-shadow1").classList.add("shadow")
+        document.querySelector(".card-shadow1").classList.add("shadowAnimate")
+        document.querySelector(".card-shadow1").classList.add("bg-white")
+        document.querySelector(".card-shadow1").classList.add("rounded")
+    }
+    function enableShadow2(){
+        document.querySelector(".card-shadow2").classList.add("shadow")
+        document.querySelector(".card-shadow2").classList.add("shadowAnimate")
+        document.querySelector(".card-shadow2").classList.add("bg-white")
+        document.querySelector(".card-shadow2").classList.add("rounded")
+    }
+    function enableShadow3(){
+        document.querySelector(".card-shadow3").classList.add("shadow")
+        document.querySelector(".card-shadow3").classList.add("shadowAnimate")
+        document.querySelector(".card-shadow3").classList.add("bg-white")
+        document.querySelector(".card-shadow3").classList.add("rounded")
+    }
+    function disableShadow0(){
+        document.querySelector(".card-shadow0").classList.remove("shadow-lg")
+        document.querySelector(".card-shadow0").classList.remove("shadowAnimate")
+        document.querySelector(".card-shadow0").classList.remove("bg-white")
+        document.querySelector(".card-shadow0").classList.remove("rounded")
+    }
+    function disableShadow1(){
+        document.querySelector(".card-shadow1").classList.remove("shadow")
+        document.querySelector(".card-shadow1").classList.remove("shadowAnimate")
+        document.querySelector(".card-shadow1").classList.remove("bg-white")
+        document.querySelector(".card-shadow1").classList.remove("rounded")
+    }
+    function disableShadow2(){
+        document.querySelector(".card-shadow2").classList.remove("shadow")
+        document.querySelector(".card-shadow2").classList.remove("shadowAnimate")
+        document.querySelector(".card-shadow2").classList.remove("bg-white")
+        document.querySelector(".card-shadow2").classList.remove("rounded")
+    }
+    function disableShadow3(){
+        document.querySelector(".card-shadow3").classList.remove("shadow")
+        document.querySelector(".card-shadow3").classList.remove("shadowAnimate")
+        document.querySelector(".card-shadow3").classList.remove("bg-white")
+        document.querySelector(".card-shadow3").classList.remove("rounded")
+    }
+    
+</script>
+
+<%- include('./partials/footer') %> 

@@ -1,0 +1,196 @@
+/* ======================================================================
+Nav Bar
+====================================================================== */
+.fixed-height{
+  height: 55px;
+}
+
+nav #navbarSupportedContent .nav-item .nav-link{
+  color: rgb(63, 61, 61);
+}
+
+nav #navbarSupportedContent .nav-item .nav-link:hover{
+  border-bottom: 2px solid #006eff;
+}
+
+/* =======================================================================
+Index Page
+======================================================================= */
+#index-head{
+  background-image: url("../index-head.jpg");
+  background-size: 1350px 550px;
+  margin-top: 0em;
+  transform: translate(0px, -55px);
+}
+
+#index-head pre{
+  font-family: 'Yusei Magic', sans-serif;
+  margin-left: 12.5%;
+  margin-top: 2em;
+  transform: translate(0px, 125px);
+}
+
+#index-head a{
+  margin-left: 18%;
+  margin-top: 2em;
+  transform: translate(0px, 85px);
+}
+
+#index-cards{
+  margin-bottom: 150em;
+}
+
+#index-cards #new-plans{
+  font-family: 'Potta One', cursive;
+}
+
+.shadowAnimate{
+  transform: translate(0px, -2.5px);
+}
+
+.last-column{
+  transform: translate(0px, -50px);
+}
+
+.second-column{
+  transform: translate(0px, -50px);
+}
+
+.first-column{
+  transform: translate(0px, -50px);
+  background-image: linear-gradient(to right, rgb(101, 214, 248), rgb(255, 255, 255));
+  /* background-image: linear-gradient(to left, rgb(101, 214, 248), rgb(255, 255, 255)); */
+}
+
+.last-column-heading{
+  background-color: rgb(170, 166, 166);
+  border-radius: 50%;
+  padding-top: 0.5%;
+  padding-bottom: 0.025%;
+}
+
+.youtube-video{
+  transform: translate(0px, 0px);
+}
+
+/* ======================================================================
+Plan Page
+====================================================================== */
+.plan-page-contents{
+  transform: translate(45px, 0px);
+}
+
+/* ======================================================================
+Start Plan Page
+====================================================================== */
+.highlighted{
+  background-color: rgb(107, 223, 103) !important;
+}
+
+.links{
+  background-color: rgb(224, 217, 217);
+  color: black;
+  font-family: 'Poly', serif;
+}
+
+.links:hover{
+  background-color: rgb(196, 189, 189);
+  text-decoration: none !important;
+}
+
+/* ======================================================================
+All Plans Page
+====================================================================== */
+.breadcrumb{
+  margin-left: 5%;
+  margin-top: -0.5%;
+  background-color: white;
+}
+
+#all_plans_sub{
+  margin-left: 6%;
+  margin-top: -0.5%;
+  background-color: white;
+  font-family: 'Armata', sans-serif;
+}
+
+.all_plans_header{
+  margin-left: 6%;
+  margin-top: -0.5%;
+  background-color: white;
+  font-family: 'Secular One', sans-serif;
+}
+
+.all_plans_cards{
+  margin-left: 6%;
+  margin-top: -0.5%;
+  background-color: white;
+}
+
+.remove-line{
+  text-decoration: none !important;
+}
+
+.remove-line:hover{
+  text-decoration: none !important;
+  transition: 0.5s;
+  background-color: rgb(150, 213, 241);
+}
+
+.card-title{
+  color: black;
+}
+
+/* ======================================================================
+Edit Plans Page
+====================================================================== */
+.ScrollStyle
+{
+    max-height: 50%;
+    overflow-y: scroll;
+}
+
+/* ======================================================================
+Admin Page
+====================================================================== */
+.admin-jumbotron{
+  transform: translate(0px, -35px);
+}
+
+/* ======================================================================
+Login/Register Page
+====================================================================== */
+.form-group{
+  width: 30%;
+  margin: 25px auto;
+}
+
+.form-group + button{
+  margin: 0px 530px;
+}
+
+/* ======================================================================
+Footer Page
+====================================================================== */
+footer {
+    padding: 7% 15%;
+    background-color: #a2acad;
+    color: rgb(0, 0, 0);
+    width: 100%;
+    transform: translate(0em, 4.5em);
+  }
+  
+  .footer-anchor {
+    margin: 20px 10px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+  }
+  
+  footer p {
+    padding-top: 10px;
+  }
+  
+  .center{
+    text-align: center;
+  }
+  

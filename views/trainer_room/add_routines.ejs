@@ -1,0 +1,33 @@
+<%- include('../partials/header') %>
+
+<center><h1><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New Training Group</h1></center>
+
+<div class="row">
+    <div class="col-md-4 col-sm-6 offset-sm-4">
+      <div class="card mt-4 shadow-lg">
+        <div class="card-body">
+          <form action="/trainer_room/add_routine" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label class="form-label"><b>Routine Name:</b> </label>
+              <input type="text" class="form-control" name="routine_name">
+            </div>
+            <div class="mb-3">
+                <label class="form-label"><b>Author Name:</b> </label>
+                <input type="text" class="form-control" name="author_name">
+              </div>
+              <div class="mb-3">
+                <label class="form-label"><b>Author Email:</b> </label>
+                <input type="text" class="form-control" name="author_email" value="<%= currentUser.username %>">
+              </div>
+            <div class="mb-3">
+              <label class="form-label"><strong>Upload Video:</strong></label>
+              <input type="file" class="form-control" name="image" required>
+            </div>
+            <button type="submit" class="btn btn-success"><b>Insert</b></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<%- include('../partials/footer') %>

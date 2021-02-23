@@ -1,0 +1,86 @@
+<%- include('../partials/header') %>
+
+<div class="jumbotron">
+    <div class="container">
+        <h1><i class="fa fa-futbol-o" aria-hidden="true"></i> Trainer's Room</h1>
+        <p>Here you can view all your created training groups and plans</p>
+        <a href="/trainer_room/add_plans" class="btn btn-primary">Create a new training group/plan</a>
+        <a href="trainer_room/add_routine" class="btn btn-danger">Add new Routine</a>
+    </div>
+</div>
+
+<div class="container">
+    <% if(error && error.length > 0){ %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <%= error %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </div>
+    <% } %>
+    <% if(success && success.length > 0){ %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <%= success %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </div>
+    <% } %>
+  </div>
+
+<div class="container">
+  <h3>Plans You Have Created</h3>
+    <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Gender Category</th>
+            <th scope="col">Number of Routines</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% i = 1 %>
+          <% plans.forEach((plan) => { %>
+            <tr>
+              <th scope="row"><%= i %></th>
+              <td><%= plan.plan_name %></td>
+              <td><%= plan.gender_category %></td>
+              <td><%= plan.number_of_routines %></td>
+              <td><a href="/trainer_room/<%= plan._id %>" title="Edit"><i class="fa fa-pencil" aria-hidden="true"></i></a> | <a href="/trainer_room/<%= plan._id %>?_method=DELETE" style="color: rgb(218, 13, 13);" title="Delete"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+            </tr>
+            <% i++ %>
+          <% }); %>
+        </tbody>
+    </table>
+</div>
+<br><br>
+<div class="container">
+  <h3>Routines You Have Created</h3>
+    <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Routine Author</th>
+            <th scope="col">Author Email</th>
+            <th scope="col">Video</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% i = 1 %>
+          <% routines.forEach((routine) => { %>
+            <tr>
+              <th scope="row"><%= i %></th>
+              <td><%= routine.routine_name %></td>
+              <td><%= routine.routine_author_name %></td>
+              <td><%= routine.routine_author_email %></td>
+              <td><a href="/preview/<%= routine._id %>">Click here to view</a></td>
+              <td><a href="/routine_delete/<%= routine._id %>?_method=DELETE" style="color: rgb(218, 13, 13);" title="Delete"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+            </tr>
+            <% i++ %>
+          <% }); %>
+        </tbody>
+    </table>
+</div>
+<%- include('../partials/footer') %>

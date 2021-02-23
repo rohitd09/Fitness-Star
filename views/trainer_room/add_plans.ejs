@@ -1,0 +1,62 @@
+<%- include('../partials/header') %>
+
+<center><h1><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New Training Plan</h1></center>
+
+<div class="row">
+    <div class="col-md-4 col-sm-6 offset-sm-4">
+      <div class="card mt-4 shadow-lg">
+        <div class="card-body">
+          <form action="/trainer_room/add_plans" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label class="form-label"><b>Training Plan Name:</b> </label>
+              <input type="text" class="form-control" name="plan_name" required>
+            </div>
+            <div class="mb-3 form-check-inline">
+              <label class="form-label"><b>Gender Category:</b></label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" id="Male" value="Male" name="gender_category">
+                <label class="form-check-label">
+                  <b>Male</b>
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" id="Female" value="Female" name="gender_category">
+                <label class="form-check-label">
+                  <b>Female</b>
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" id="Both" value="Both" name="gender_category">
+                <label class="form-check-label">
+                  <b>Both</b>
+                </label>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label"><b>Author Name:</b></label>
+              <input type="text" class="form-control" name="author_name">
+            </div>
+            <div class="mb-3">
+              <label class="form-label"><b>Email address:</b></label>
+              <input type="email" class="form-control" value="<%= currentUser.username %>" name="author_email">
+            </div>
+            <div class="form-group" style="width: 100%;">
+              <label><b>Description:</b></label>
+              <textarea class="form-control" name="plan_description" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+              <label class="form-label"><strong>Upload image:</strong></label>
+              <input type="file" class="form-control" name="image" required>
+            </div>
+            <button type="submit" class="btn btn-success"><b>Insert</b></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  document.querySelector("#Male").checked = true
+</script>
+
+<%- include('../partials/footer') %>
